@@ -1,55 +1,62 @@
 base_model: pretrained_models/Spark-TTS-0.5B/LLM
 # Automatically upload checkpoint and final model to HF
-# hub_model_id: username/custom_model_name
+
+hub_model_id: Alawy21/spark-tts-finetuned  # Replace with your HF username
+hub_strategy: "checkpoint"                        # Upload strategy: "checkpoint", "end", "every_save"
+hub_token: null                                   # HF token (set via HF_TOKEN env var or login)
+hub_private_repo: true                           # Make repo public (true for private)
+push_dataset_to_hub: "false"                     # Fixed: Changed from false to "false"
+hf_use_auth_token: true                          # Use HF authentication token
 
 trust_remote_code: true
-
 strict: false
-
 datasets:
-  - path: json
-    data_files: ["output_prompt/LJSpeech-1.1.jsonl"]
+  - path: /kaggle/input/clartts-data/ClarTTS_csv.jsonl
     type: completion
+    field: text
     
-dataset_prepared_path:
+dataset_prepared_path: 
 val_set_size: 0.05
 output_dir: ./outputs/out
-
-
 sequence_len: 2048
 sample_packing: true
 eval_sample_packing: true
 pad_to_sequence_len: true
 
-wandb_project:
-wandb_entity:
-wandb_watch:
-wandb_name:
-wandb_log_model:
+wandb_project: spark-tts-finetuning
+wandb_watch: all
+wandb_name: spark-tts-t4-run1
+wandb_log_model: "checkpoint"      # Fixed: Changed from true to "true"
 
-gradient_accumulation_steps: 4
-micro_batch_size: 4
+# T4-Optimized Settings
+gradient_accumulation_steps: 4  # Increased to maintain effective batch size
+micro_batch_size: 1             # Reduced for T4's 16GB VRAM
 num_epochs: 50
 optimizer: adamw_torch_fused
 lr_scheduler: cosine
 learning_rate: 0.0002
-
 train_on_inputs: false
 group_by_length: false
-bf16: auto
-fp16:
-tf32: true
 
+# GPU Architecture Compatibility (T4 = Turing, not Ampere)
+bf16: false              # T4 has limited bfloat16 support
+fp16: false               # T4 supports FP16 mixed precision
+tf32: false              # T4 doesn't support TF32 (Ampere+ only)
+
+# Memory and Performance Optimization
 gradient_checkpointing: true
 gradient_checkpointing_kwargs:
   use_reentrant: false
+
+# Attention Mechanism (T4 Compatible)
+xformers_attention: true    # Works well on T4
+flash_attention: false      # T4 doesn't support FlashAttention
+
+# Training Configuration
 early_stopping_patience:
 resume_from_checkpoint:
 local_rank:
 logging_steps: 50
-xformers_attention:
-flash_attention: true
-
 warmup_steps: 10
 evals_per_epoch: 1
 save_steps: 500
