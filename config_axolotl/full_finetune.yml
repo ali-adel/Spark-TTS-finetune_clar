@@ -8,6 +8,8 @@ base_model: pretrained_models/Spark-TTS-0.5B/LLM
 #push_dataset_to_hub: "false"                     # Fixed: Changed from false to "false"
 #hf_use_auth_token: true                          # Use HF authentication token
 
+output_dir: /kaggle/working/spark_out
+
 trust_remote_code: true
 strict: false
 datasets:
