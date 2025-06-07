@@ -1,12 +1,12 @@
 base_model: pretrained_models/Spark-TTS-0.5B/LLM
 # Automatically upload checkpoint and final model to HF
 
-hub_model_id: Alawy21/spark-tts-finetuned  # Replace with your HF username
-hub_strategy: "checkpoint"                        # Upload strategy: "checkpoint", "end", "every_save"
-hub_token: null                                   # HF token (set via HF_TOKEN env var or login)
-hub_private_repo: true                           # Make repo public (true for private)
-push_dataset_to_hub: "false"                     # Fixed: Changed from false to "false"
-hf_use_auth_token: true                          # Use HF authentication token
+#hub_model_id: Alawy21/spark-tts-finetuned  # Replace with your HF username
+#hub_strategy: "checkpoint"                        # Upload strategy: "checkpoint", "end", "every_save"
+#hub_token: null                                   # HF token (set via HF_TOKEN env var or login)
+#hub_private_repo: true                           # Make repo public (true for private)
+#push_dataset_to_hub: "false"                     # Fixed: Changed from false to "false"
+#hf_use_auth_token: true                          # Use HF authentication token
 
 trust_remote_code: true
 strict: false
