@@ -25,10 +25,10 @@ sample_packing: true
 eval_sample_packing: true
 pad_to_sequence_len: true
 
-wandb_project: spark-tts-finetuning
-wandb_watch: all
-wandb_name: spark-tts-t4-run1
-wandb_log_model: "checkpoint"      # Fixed: Changed from true to "true"
+# wandb_project: spark-tts-finetuning
+# wandb_watch: all
+# wandb_name: spark-tts-t4-run1
+# wandb_log_model: "checkpoint"      # Fixed: Changed from true to "true"
 
 # T4-Optimized Settings
 gradient_accumulation_steps: 4  # Increased to maintain effective batch size
