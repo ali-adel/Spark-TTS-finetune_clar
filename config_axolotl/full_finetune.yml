@@ -13,7 +13,7 @@ output_dir: /kaggle/working/spark_out
 trust_remote_code: true
 strict: false
 datasets:
-  - path: /kaggle/input/clartts-data/ClarTTS_csv.jsonl
+  - path: /kaggle/input/clar-tts-v2/ClarTTS_csv.jsonl
     type: completion
     field: text
     
