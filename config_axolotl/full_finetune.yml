@@ -60,7 +60,7 @@ local_rank:
 logging_steps: 50
 warmup_steps: 10
 evals_per_epoch: 1
-save_steps: 5
+save_steps: 500
 debug:
 deepspeed:
 weight_decay: 0.0
