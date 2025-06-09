@@ -55,7 +55,7 @@ flash_attention: false      # T4 doesn't support FlashAttention
 
 # Training Configuration
 early_stopping_patience:
-resume_from_checkpoint:
+resume_from_checkpoint: /kaggle/working/spark_out/checkpoint-1000  # ADD THIS LINE
 local_rank:
 logging_steps: 50
 warmup_steps: 10
