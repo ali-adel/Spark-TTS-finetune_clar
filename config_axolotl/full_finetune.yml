@@ -55,7 +55,7 @@ flash_attention: false      # T4 doesn't support FlashAttention
 
 # Training Configuration
 early_stopping_patience:
-resume_from_checkpoint: /content/drive/MyDrive/spark_checkpoint/checkpoint-1000.zip # ADD THIS LINE
+resume_from_checkpoint: /content/checkpoint_1000 # ADD THIS LINE
 local_rank:
 logging_steps: 50
 warmup_steps: 10
