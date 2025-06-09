@@ -12,13 +12,13 @@ base_model: pretrained_models/Spark-TTS-0.5B/LLM
 trust_remote_code: true
 strict: false
 datasets:
-  - path: /kaggle/input/clar-tts-v2/ClarTTS_csv.jsonl
+  - path: /content/drive/MyDrive/ClarTTS_csv/ClarTTS_csv.jsonl
     type: completion
     field: text
     
 dataset_prepared_path: 
 val_set_size: 0.05
-output_dir: /kaggle/working/spark_out
+output_dir: /content/drive/MyDrive/spark_checkpoint
 sequence_len: 2048
 sample_packing: true
 eval_sample_packing: true
@@ -55,7 +55,7 @@ flash_attention: false      # T4 doesn't support FlashAttention
 
 # Training Configuration
 early_stopping_patience:
-resume_from_checkpoint: /kaggle/working/spark_out/checkpoint-1000  # ADD THIS LINE
+resume_from_checkpoint: /content/drive/MyDrive/spark_checkpoint/checkpoint-1000.zip # ADD THIS LINE
 local_rank:
 logging_steps: 50
 warmup_steps: 10
